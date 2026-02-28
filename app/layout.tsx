@@ -3,7 +3,8 @@ import { Nunito, Nunito_Sans} from "next/font/google";
 import clsx from "clsx";
 import "./globals.css";
 import { createClient } from "@/prismicio";
-import Link from "next/link";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const nunito = Nunito({
   variable: "--font-nunito-sans",
@@ -25,12 +26,12 @@ export async function generateMetadata(
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   const client = createClient();
-  const page = await client.getSingle('settings')
+  const settings = await client.getSingle('settings')
   return {
-    title: page.data.site_title || "Flowrise",
-    description: page.data.meta_description || "Flowrise - The Flow Designer",
+    title: settings.data.site_title || "Flowrise",
+    description: settings.data.meta_description || "Flowrise - The Flow Designer",
     openGraph: {
-      images: [page.data.og_image.url || ""],
+      images: [settings.data.og_image.url || ""],
     },
 }
 }
@@ -43,22 +44,10 @@ export default async function RootLayout({
   return (
     <html lang="en" className={clsx(nunito.variable, nunitoSans.variable)}>
       <body>
-        <header>
-          <nav>
-            <ul>
-              {/* {navigation.data.navigation.map((item, index) => (
-                <li key={index}>
-                  <Link href={item.link.url}>{item.label}</Link>
-                </li>
-              ))} */}
-            </ul>
-          </nav>
-        </header>
+        <Header />
         {children}
       </body>
-      <footer>
-        <p>Flowrise - The Flow Designer</p>
-      </footer>
+      <Footer />
     </html>
   );
 }
