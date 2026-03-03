@@ -9,8 +9,10 @@
 					{
 						"type": "heading1",
 						"content": {
-							"text": "Compass"
-						}
+							"text": "Productivity that flows with your life.",
+							"spans": []
+						},
+						"direction": "ltr"
 					}
 				]
 			},
@@ -25,11 +27,6 @@
 					}
 				]
 			},
-			"buttontext": {
-				"__TYPE__": "FieldContent",
-				"value": "chair",
-				"type": "Text"
-			},
 			"button_link": {
 				"key": "bc434ee5-4e87-4b17-8118-42d3c0a0ae62",
 				"__TYPE__": "LinkContent",
@@ -40,7 +37,6 @@
 				}
 			},
 			"image": {
-				"__TYPE__": "ImageContent",
 				"origin": {
 					"id": "main",
 					"url": "https://images.unsplash.com/photo-1593642532973-d31b6557fa68",
@@ -59,7 +55,14 @@
 					"background": "transparent"
 				},
 				"alt": "immediately",
+				"credits": null,
+				"__TYPE__": "ImageContent",
 				"thumbnails": {}
+			},
+			"buttontext": {
+				"__TYPE__": "FieldContent",
+				"type": "Text",
+				"value": "Try for free"
 			}
 		},
 		"items": []

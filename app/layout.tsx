@@ -7,12 +7,12 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 const nunito = Nunito({
-  variable: "--font-nunito-sans",
+  variable: "--font-nunito",
   subsets: ["latin"],
 });
 
 const nunitoSans = Nunito_Sans({
-  variable: "--font-nunito-mono",
+  variable: "--font-nunito-sans",
   subsets: ["latin"],
 });
 
@@ -46,8 +46,8 @@ export default async function RootLayout({
       <body>
         <Header />
         {children}
+        <Footer />
       </body>
-      <Footer />
     </html>
   );
 }
