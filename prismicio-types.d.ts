@@ -69,7 +69,7 @@ type ContentRelationshipFieldWithData<
   >;
 }[Exclude<TCustomType[number], string>["id"]];
 
-type HomeDocumentDataSlicesSlice = never;
+type HomeDocumentDataSlicesSlice = HeroSlice;
 
 /**
  * Content for Home documents
@@ -308,9 +308,83 @@ export type HeroSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *Hero → Horizontal Hero → Primary*
+ */
+export interface HeroSliceHorizontalHeroPrimary {
+  /**
+   * heading field in *Hero → Horizontal Hero → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Flowrise
+   * - **API ID Path**: hero.horizontalHero.primary.heading
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * sublabel field in *Hero → Horizontal Hero → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.horizontalHero.primary.sublabel
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  sublabel: prismic.RichTextField;
+
+  /**
+   * Button Text field in *Hero → Horizontal Hero → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.horizontalHero.primary.buttontext
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  buttontext: prismic.KeyTextField;
+
+  /**
+   * Button Link field in *Hero → Horizontal Hero → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.horizontalHero.primary.button_link
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  button_link: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+
+  /**
+   * image field in *Hero → Horizontal Hero → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.horizontalHero.primary.image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * Horizontal Hero variation for Hero Slice
+ *
+ * - **API ID**: `horizontalHero`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type HeroSliceHorizontalHero = prismic.SharedSliceVariation<
+  "horizontalHero",
+  Simplify<HeroSliceHorizontalHeroPrimary>,
+  never
+>;
+
+/**
  * Slice variation for *Hero*
  */
-type HeroSliceVariation = HeroSliceDefault;
+type HeroSliceVariation = HeroSliceDefault | HeroSliceHorizontalHero;
 
 /**
  * Hero Shared Slice
@@ -351,8 +425,10 @@ declare module "@prismicio/client" {
       AllDocumentTypes,
       HeroSlice,
       HeroSliceDefaultPrimary,
+      HeroSliceHorizontalHeroPrimary,
       HeroSliceVariation,
       HeroSliceDefault,
+      HeroSliceHorizontalHero,
     };
   }
 }
