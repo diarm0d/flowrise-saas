@@ -1,0 +1,40 @@
+{
+  "type": "SharedSlice",
+  "id": "cta_banner",
+  "name": "CTA Banner",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Default variation for a call-to-action banner.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "headline": {
+          "type": "StructuredText",
+          "config": {
+            "single": "heading2,strong,em",
+            "label": "Headline"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "single": "paragraph,strong,em",
+            "label": "Description"
+          }
+        },
+        "button_link": {
+          "type": "Link",
+          "config": {
+            "label": "Button Link",
+            "allowText": true,
+            "repeat": false,
+            "select": null
+          }
+        }
+      }
+    }
+  ]
+}

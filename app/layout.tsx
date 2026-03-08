@@ -47,6 +47,7 @@ export default async function RootLayout({
         <Header />
         {children}
         <Footer />
+        <div className="fixed bg-linear-to-tr from-emerald-50 via-white to-cyan-50 z-[-1] inset-0 opacity-50 "/>
       </body>
     </html>
   );
