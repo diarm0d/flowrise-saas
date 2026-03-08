@@ -54,12 +54,14 @@ const Hero: FC<HeroProps> = ({ slice }) => {
               field={slice.primary.sublabel}
               components={components}
             />
-            <Button field={slice.primary.button_link}>
-              {slice.primary.buttontext}
-            </Button>
+            {slice.primary.buttontext && (
+              <Button field={slice.primary.button_link}>
+                {slice.primary.buttontext}
+              </Button>
+            )}
             <PrismicNextImage
               field={slice.primary.image}
-              className="drop-shadow-xl max-w-4xl  w-full"
+              className="drop-shadow-xl max-w-4xl w-full"
             />
           </div>
         </Bounded>
@@ -69,7 +71,7 @@ const Hero: FC<HeroProps> = ({ slice }) => {
           data-slice-type={slice.slice_type}
           data-slice-variation={slice.variation}
         >
-          <div className="grid grid-cols-2 place-items-center">
+          <div className="grid grid-cols-2 gap-4 place-items-center">
             <div className="grid grid-rows-[1fr,auto,auto] h-fit">
               <PrismicRichText
                 field={slice.primary.heading}
@@ -79,9 +81,11 @@ const Hero: FC<HeroProps> = ({ slice }) => {
                 field={slice.primary.sublabel}
                 components={components}
               />
-              <Button field={slice.primary.button_link}>
-                {slice.primary.buttontext}
-              </Button>
+              {slice.primary.buttontext && (
+                <Button field={slice.primary.button_link}>
+                  {slice.primary.buttontext}
+                </Button>
+              )}
             </div>
             <PrismicNextImage
               field={slice.primary.image}
