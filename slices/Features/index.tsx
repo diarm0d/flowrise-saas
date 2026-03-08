@@ -14,7 +14,7 @@ export const components: RichTextComponents = {
   heading3: ({ children }) => (
     <Heading
       as="h3"
-      size="lg"
+      size="md"
       className={`mb-3 font-medium sm:text-left text-center`}
     >
       {children}
