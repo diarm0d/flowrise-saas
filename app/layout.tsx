@@ -1,10 +1,11 @@
 import type { Metadata, ResolvingMetadata } from "next";
-import { Nunito, Nunito_Sans} from "next/font/google";
+import { Nunito, Nunito_Sans } from "next/font/google";
 import clsx from "clsx";
 import "./globals.css";
-import { createClient } from "@/prismicio";
+import { createClient, repositoryName } from "@/prismicio";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { PrismicPreview } from "@prismicio/next";
 
 const nunito = Nunito({
   variable: "--font-nunito",
@@ -17,23 +18,24 @@ const nunitoSans = Nunito_Sans({
 });
 
 type Props = {
-  params: Promise<{ id: string }>
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
-}
- 
+  params: Promise<{ id: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+};
+
 export async function generateMetadata(
   { params, searchParams }: Props,
-  parent: ResolvingMetadata
+  parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const client = createClient();
-  const settings = await client.getSingle('settings')
+  const settings = await client.getSingle("settings");
   return {
     title: settings.data.site_title || "Flowrise",
-    description: settings.data.meta_description || "Flowrise - The Flow Designer",
+    description:
+      settings.data.meta_description || "Flowrise - The Flow Designer",
     openGraph: {
       images: [settings.data.og_image.url || ""],
     },
-}
+  };
 }
 
 export default async function RootLayout({
@@ -47,7 +49,8 @@ export default async function RootLayout({
         <Header />
         {children}
         <Footer />
-        <div className="fixed bg-linear-to-tr from-emerald-50 via-white to-cyan-50 z-[-1] inset-0 opacity-50 "/>
+        <div className="fixed bg-linear-to-tr from-emerald-50 via-white to-cyan-50 z-[-1] inset-0 opacity-50 " />
+        <PrismicPreview repositoryName={repositoryName} />
       </body>
     </html>
   );
